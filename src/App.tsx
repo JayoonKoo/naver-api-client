@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.css";
+import { useReducer } from "react";
+import { Container } from "reactstrap";
+import Assosiate from "./components/Assosiate";
+import InputComponent from "./components/InputComponent";
+import { reducer, SearchDispatchContext, SearchStateContext } from "./context";
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, {
+    associate: {
+			result: false,
+      query: [],
+      items: [],
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SearchStateContext.Provider value={state}>
+      <SearchDispatchContext.Provider value={dispatch}>
+        <Container>
+          <InputComponent />
+					<Assosiate />
+        </Container>
+      </SearchDispatchContext.Provider>
+    </SearchStateContext.Provider>
   );
 }
 
