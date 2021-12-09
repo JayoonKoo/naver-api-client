@@ -1,8 +1,9 @@
 import { createContext, Dispatch } from "react";
-import { Compelete } from "./type";
+import { Compelete, SearchResult } from "./type";
 
 export type State = {
   associate: Compelete;
+  searchResult: SearchResult;
 };
 
 export type Action =
@@ -12,6 +13,10 @@ export type Action =
     }
   | {
       type: "CLEAR_ASSOCIATE";
+    }
+  | {
+      type: "GET_SEARCH_RESULT";
+      payload: SearchResult;
     };
 
 export type SearchDispatch = Dispatch<Action>;
@@ -34,6 +39,11 @@ export const reducer = (state: State, action: Action): State => {
           items: [],
           query: [],
         },
+      };
+    case "GET_SEARCH_RESULT":
+      return {
+        ...state,
+        searchResult: action.payload,
       };
     default:
       throw new Error("Unhandled action");

@@ -36,7 +36,8 @@ const InputComponent = () => {
 		e.preventDefault();
 		const search = inputRef.current!.value 
 		const data = await SearchService.getSearchResult(search)
-		console.log(data);
+		
+		dispatch({type: "GET_SEARCH_RESULT", payload: data})
 		dispatch({type : "CLEAR_ASSOCIATE"})
   };
 
