@@ -5,10 +5,14 @@ export type State = {
   associate: Compelete;
 };
 
-export type Action = {
-  type: "SET_ASSOCIATE";
-  payload: Compelete;
-};
+export type Action =
+  | {
+      type: "SET_ASSOCIATE";
+      payload: Compelete;
+    }
+  | {
+      type: "CLEAR_ASSOCIATE";
+    };
 
 export type SearchDispatch = Dispatch<Action>;
 
@@ -21,6 +25,15 @@ export const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         associate: action.payload,
+      };
+    case "CLEAR_ASSOCIATE":
+      return {
+        ...state,
+        associate: {
+          result: false,
+          items: [],
+          query: [],
+        },
       };
     default:
       throw new Error("Unhandled action");
