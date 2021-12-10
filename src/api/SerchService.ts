@@ -12,7 +12,6 @@ class SearchService {
 
   public static getSearchResult = async (search: string) => {
     const url = `/api/search/${search}`;
-    console.log(url);
     const { data } = await axios({
       url,
       method: "POST",

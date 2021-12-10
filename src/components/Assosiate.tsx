@@ -1,35 +1,37 @@
 import styled from "@emotion/styled";
 import { MouseEvent } from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
-import useSearchState from "../hooks/useSearchState"
+import useSearchState from "../hooks/useSearchState";
 
 type AssosiateProps = {
-	onClick: (e : MouseEvent<HTMLButtonElement>) => void
-}
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+};
 
-const Assosiate = ({onClick}: AssosiateProps) => {
-	const state = useSearchState()
+const Assosiate = ({ onClick }: AssosiateProps) => {
+  const state = useSearchState();
 
-	return (
-		<>
-			{state.associate.result &&
-				<ListGroup>
+  return (
+    <>
+      {state.associate.result && (
+				<ListGroup className="position-absolute" style={{zIndex: "100"}}>
 					{state.associate.items[0].map((item, i) => (
-						<ListGroupItemStyled onClick={onClick} key={i} tag="li">{item[0]}</ListGroupItemStyled>
+						<ListGroupItemStyled onClick={onClick} key={i} tag="li">
+							{item[0]}
+						</ListGroupItemStyled>
 					))}
 				</ListGroup>
-			}
-		</>
-	)
-}
+      )}
+    </>
+  );
+};
 
 const ListGroupItemStyled = styled(ListGroupItem)`
-	transition: all .1s;
-	cursor: pointer;
-	&:hover {
-		background-color: royalblue;
-		color: white;
-	}
-`
+  transition: all 0.1s;
+  cursor: pointer;
+  &:hover {
+    background-color: royalblue;
+    color: white;
+  }
+`;
 
-export default Assosiate
+export default Assosiate;
