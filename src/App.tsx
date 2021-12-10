@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { useReducer } from "react";
-import { Container } from "reactstrap";
-import InputComponent from "./components/InputComponent";
-import SearchResult from "./components/SearchResult";
 import { reducer, SearchDispatchContext, SearchStateContext } from "./context";
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import Header from "./components/Header";
+import { Chart, Search } from "./page";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, {
@@ -24,10 +24,13 @@ function App() {
   return (
     <SearchStateContext.Provider value={state}>
       <SearchDispatchContext.Provider value={dispatch}>
-        <Container>
-          <InputComponent />
-					<SearchResult />
-        </Container>
+				<BrowserRouter>
+					<Header />
+					<Switch>
+						<Route exact path="/chart" component={Chart} />
+						<Route exact path="/" component={Search} />
+					</Switch>
+				</BrowserRouter>
       </SearchDispatchContext.Provider>
     </SearchStateContext.Provider>
   );

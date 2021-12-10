@@ -61,9 +61,9 @@ const InputComponent = () => {
           <Button
             style={{
               width: "100%",
-              backgroundColor: "#fab1a0",
+              backgroundColor: "#fdcb6e",
               border: "#fab1a0",
-              color: "#fff",
+              color: "#666",
 							fontSize: "18px",
 							fontWeight: "700"
             }}
