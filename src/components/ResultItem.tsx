@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
 import { Button } from "reactstrap";
+import ProductService from "../api/ProductService";
 import { SearchItem } from "../type"
 
 const getProductTitle = (title: string):string =>  {
@@ -12,8 +13,9 @@ type ResultItemProps = {
 
 const ResultItem = ({item}: ResultItemProps) => {
 	const title = getProductTitle(item.title)
-	const onCLick = () => {
-		alert(JSON.stringify(item))
+	const onCLick = async () => {
+		await ProductService.buyProduct(item)
+		alert('구매 완료')
 	}
 	return (
 		<Item>
