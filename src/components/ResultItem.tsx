@@ -12,13 +12,16 @@ type ResultItemProps = {
 
 const ResultItem = ({item}: ResultItemProps) => {
 	const title = getProductTitle(item.title)
+	const onCLick = () => {
+		alert(JSON.stringify(item))
+	}
 	return (
 		<Item>
 			<Image imgUrl={item.image}/>
 			<span>{title}</span>
 			<Buy>
 				<span>{Number(item.lprice).toLocaleString()} 원</span>
-				<ButtonStyled >구매</ButtonStyled>
+				<ButtonStyled onClick={onCLick} >구매</ButtonStyled>
 			</Buy>
 		</Item>
 	)
