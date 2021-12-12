@@ -2,10 +2,8 @@ import styled from "@emotion/styled"
 import { Button } from "reactstrap";
 import ProductService from "../api/ProductService";
 import { SearchItem } from "../type"
+import { getProductTitle } from "../utils";
 
-const getProductTitle = (title: string):string =>  {
-	return title.split('<b>').join(' ').split('</b>').join(' ')
-}
 
 type ResultItemProps = {
 	item: SearchItem
