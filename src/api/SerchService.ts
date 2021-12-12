@@ -10,13 +10,16 @@ class SearchService {
     return data;
   };
 
-  public static getSearchResult = async (search: string) => {
+  public static getSearchResult = async (search: string, start: number = 1) => {
+    console.log(start);
+
     const url = `/api/search/${search}`;
     const { data } = await axios({
       url,
       method: "POST",
       data: {
         search,
+        start,
       },
     });
     return data;
