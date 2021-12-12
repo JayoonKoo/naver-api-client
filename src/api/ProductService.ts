@@ -37,6 +37,17 @@ class ProductService {
       },
     });
   };
+
+  public static getCategory = async (categoryName?: string) => {
+    const url = categoryName
+      ? `/api/product/category?categoryName=${categoryName}`
+      : `/api/product/category`;
+    const { data } = await axios({
+      url,
+      method: "GET",
+    });
+    return data;
+  };
 }
 
 export default ProductService;
