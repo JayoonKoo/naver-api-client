@@ -18,7 +18,9 @@ function App() {
 			lastBuildDate: "",
 			start: 0,
 			total: 0,
-		}
+		},
+		chartDetail: [],
+		start: 1
   });
 
   return (
