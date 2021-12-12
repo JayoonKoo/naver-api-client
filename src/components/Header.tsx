@@ -29,6 +29,7 @@ const HeaderStyled = styled.header`
 	color: white;
 	font-size: 40px;
 	font-weight: 700;
+	z-index: 100;
 `
 
 const Links = styled.nav`
