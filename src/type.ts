@@ -4,22 +4,29 @@ export type Compelete = {
   items: Array<Array<string[]>>;
 };
 
-export type SearchItem = {
-  brand: string;
+export type Product = {
+  buyCount: number;
   category1: string;
   category2: string;
   category3: string;
   category4: string;
-  hprice: string;
   image: string;
-  link: string;
-  lprice: string;
-  maker: string;
-  mallName: string;
+  insertDate: string;
   productId: string;
-  productType: string;
   title: string;
+  updateDate: string;
 };
+
+export type SearchItem =
+  | {
+      brand: string;
+      hprice: string;
+      link: string;
+      lprice: string;
+      maker: string;
+      mallName: string;
+      productType: string;
+    } & Product;
 
 export type SearchResult = {
   display: number;
@@ -27,4 +34,15 @@ export type SearchResult = {
   lastBuildDate: string;
   start: number;
   total: number;
+};
+
+export type ChartData = {
+  id: string;
+  color: string;
+  data: [
+    {
+      x: string;
+      y: number;
+    }
+  ];
 };
