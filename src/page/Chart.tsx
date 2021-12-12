@@ -1,8 +1,13 @@
+import { Container } from "reactstrap"
+import ChartDetail from "../components/ChartDetail"
+import ChartDisplay from "../components/ChartDisplay"
+
 const Chart = () => {
 	return (
-		<div>
-			
-		</div>
+		<Container>
+			<ChartDisplay />
+			<ChartDetail />
+		</Container>
 	)
 }
 
